@@ -1,0 +1,4 @@
+id,unit_system,length,width,height,dimension_unit,actual_weight,weight_unit,divisor,expected_dimensional_weight,expected_billable_weight
+metric-5000-01,metric,50,40,30,cm,5,kg,5000,12,12
+imperial-166-01,imperial,20,10,8,in,5,lb,166,9.64,9.64
+imperial-180-01,imperial,20,10,8,in,10,lb,180,8.89,10

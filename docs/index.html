@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open Dimensional Weight Reference & Test Vectors</title>
+  <meta name="description" content="Open dimensional-weight formulas, assumptions and reproducible metric and imperial test vectors for parcel research.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://jk130363.github.io/findhaul-resource-repository/">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #101318;
+      --panel: #191e26;
+      --border: #303844;
+      --text: #f4f6f8;
+      --muted: #aeb7c2;
+      --accent: #ff7a1a;
+      --green: #60d394;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 80% 0%, #251b16 0, var(--bg) 42%);
+      color: var(--text);
+    }
+    main { width: min(100% - 32px, 980px); margin: 0 auto; padding: 64px 0 80px; }
+    header { max-width: 780px; margin-bottom: 42px; }
+    .eyebrow { color: var(--green); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 10px 0 18px; font-size: clamp(2.2rem, 6vw, 4.4rem); line-height: 1.05; letter-spacing: -.04em; }
+    h2 { margin: 0 0 14px; font-size: 1.45rem; }
+    p { margin: 0 0 16px; }
+    .lede { color: var(--muted); font-size: 1.15rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin: 24px 0 44px; }
+    .card { background: color-mix(in srgb, var(--panel) 94%, transparent); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
+    code { background: #0b0e12; border: 1px solid var(--border); border-radius: 5px; padding: 2px 6px; }
+    .formula { display: block; overflow-x: auto; padding: 18px; margin: 14px 0 0; color: #ffd6b8; }
+    table { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: .94rem; }
+    th, td { padding: 12px 10px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+    th { color: var(--muted); font-size: .78rem; letter-spacing: .05em; text-transform: uppercase; }
+    .downloads { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0 0; }
+    a { color: #ffad73; }
+    .button { display: inline-block; border: 1px solid #9c4d18; border-radius: 999px; padding: 9px 15px; text-decoration: none; font-weight: 700; }
+    .note { border-left: 3px solid var(--accent); padding-left: 16px; color: var(--muted); }
+    footer { margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--border); color: var(--muted); font-size: .9rem; }
+    @media (max-width: 640px) {
+      main { width: min(100% - 24px, 980px); padding-top: 38px; }
+      .table-wrap { overflow-x: auto; }
+      table { min-width: 720px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">Open calculation reference</div>
+      <h1>Dimensional Weight Test Vectors</h1>
+      <p class="lede">A small, reproducible reference for checking parcel dimensional-weight implementations. It separates unit systems, divisors, rounding and billable-weight selection so results can be compared without assuming a shipping price.</p>
+    </header>
+
+    <section class="grid" aria-label="Calculation formulas">
+      <article class="card">
+        <h2>Metric formula</h2>
+        <p>Use centimetres for all three dimensions and kilograms for actual weight.</p>
+        <code class="formula">dim_kg = (length_cm × width_cm × height_cm) ÷ divisor</code>
+      </article>
+      <article class="card">
+        <h2>Imperial formula</h2>
+        <p>Use inches for all three dimensions and pounds for actual weight.</p>
+        <code class="formula">dim_lb = (length_in × width_in × height_in) ÷ divisor</code>
+      </article>
+      <article class="card">
+        <h2>Billable weight</h2>
+        <p>For these test vectors, select the greater of actual and dimensional weight, then round the displayed result to two decimal places.</p>
+        <code class="formula">billable = max(actual, dimensional)</code>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Reference test vectors</h2>
+      <p>These examples test formula behavior only. They do not represent a carrier quote, packing rule, minimum charge or guaranteed shipment outcome.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Units</th>
+              <th>Dimensions</th>
+              <th>Actual</th>
+              <th>Divisor</th>
+              <th>Dimensional</th>
+              <th>Billable</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>metric-5000-01</td>
+              <td>cm / kg</td>
+              <td>50 × 40 × 30</td>
+              <td>5 kg</td>
+              <td>5000</td>
+              <td>12 kg</td>
+              <td>12 kg</td>
+            </tr>
+            <tr>
+              <td>imperial-166-01</td>
+              <td>in / lb</td>
+              <td>20 × 10 × 8</td>
+              <td>5 lb</td>
+              <td>166</td>
+              <td>9.64 lb</td>
+              <td>9.64 lb</td>
+            </tr>
+            <tr>
+              <td>imperial-180-01</td>
+              <td>in / lb</td>
+              <td>20 × 10 × 8</td>
+              <td>10 lb</td>
+              <td>180</td>
+              <td>8.89 lb</td>
+              <td>10 lb</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="downloads">
+        <a class="button" href="test-vectors.json" download>Download JSON</a>
+        <a class="button" href="test-vectors.csv" download>Download CSV</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Implementation notes</h2>
+        <ul>
+          <li>Do not mix centimetres with an imperial divisor or inches with a metric divisor.</li>
+          <li>Keep the unrounded dimensional value for the comparison step.</li>
+          <li>Apply carrier-specific rounding or minimums separately from this reference.</li>
+          <li>Record packed dimensions, not an assumed product-box size.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>What this reference does not claim</h2>
+        <p class="note">A matching calculation does not verify a carrier tariff, destination fee, parcel acceptance, customs outcome or delivery time. Divisors and billing rules can vary by service and date.</p>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Try the same inputs interactively</h2>
+      <p>For a browser-based version with editable dimensions, unit systems and divisors, use the <a href="https://findhaul.com/shipping-calculator">FindHaul dimensional-weight calculator</a>. Confirm any real shipment against the current provider terms before making a purchase or shipping decision.</p>
+    </section>
+
+    <footer>
+      <p>Version 1.0 · Published as an open educational reference · No prices, carrier endorsements or shipment guarantees.</p>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dimensional weight calculation test vectors",
+  "version": "1.0",
+  "rounding": "Compare unrounded dimensional weight with actual weight; round displayed values to two decimals.",
+  "vectors": [
+    {
+      "id": "metric-5000-01",
+      "unitSystem": "metric",
+      "dimensions": { "lengthCm": 50, "widthCm": 40, "heightCm": 30 },
+      "actualWeightKg": 5,
+      "divisor": 5000,
+      "expectedDimensionalWeightKg": 12,
+      "expectedBillableWeightKg": 12
+    },
+    {
+      "id": "imperial-166-01",
+      "unitSystem": "imperial",
+      "dimensions": { "lengthIn": 20, "widthIn": 10, "heightIn": 8 },
+      "actualWeightLb": 5,
+      "divisor": 166,
+      "expectedDimensionalWeightLb": 9.64,
+      "expectedBillableWeightLb": 9.64
+    },
+    {
+      "id": "imperial-180-01",
+      "unitSystem": "imperial",
+      "dimensions": { "lengthIn": 20, "widthIn": 10, "heightIn": 8 },
+      "actualWeightLb": 10,
+      "divisor": 180,
+      "expectedDimensionalWeightLb": 8.89,
+      "expectedBillableWeightLb": 10
+    }
+  ]
+}
